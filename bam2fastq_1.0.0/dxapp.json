@@ -1,0 +1,43 @@
+{
+  "name": "bam2fastq_1.0.0",
+  "title": "bam2fastq_1.0.0",
+  "summary": "bam2fastq_1.0.0",
+  "dxapi": "2.0.1",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.bam"
+      ],
+      "label": "alignment",
+      "name": "bam",
+      "class": "file"
+    },
+    {
+      "label": "Sample",
+      "class": "string",
+      "name": "sample"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "Gzip-compressed FASTQ file for first reads",
+      "name": "reads1_fastqgz",
+      "class": "file"
+    },
+    {
+      "label": "Gzip-compressed FASTQ file for first reads",
+      "name": "reads2_fastqgz",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [ ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x4"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

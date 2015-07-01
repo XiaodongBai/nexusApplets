@@ -1,0 +1,52 @@
+{
+  "name": "freeze_applying_qdfilter_2.0.0",
+  "title": "freeze_applying_qdfilter_2.0.0",
+  "summary": "freeze_applying_qdfilter_2.0.0",
+  "dxapi": "2.0.0",
+  "inputSpec": [
+    {
+      "label": "pVCF file",
+      "help": "The naming convention of VCF files.",
+      "name": "pvcf",
+      "class": "file"
+    },
+    {
+      "label": "TBI file of pVCF file",
+      "name": "ptbi",
+      "class": "file"
+    },
+    {
+      "label": "Information file on samples failing QDFilter",
+      "name": "info",
+      "class": "file"
+    },
+    {
+      "label": "Sample",
+      "name": "sample",
+      "class": "string"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "filtered_vcf",
+      "help": "bgzipped, filtered vcf.",
+      "name": "filtered_vcfgz",
+      "class": "file"
+    },
+    {
+      "label": "filtered_vcf tabix index",
+      "help": "bgzipped, filtered vcf tbi.",
+      "name": "filtered_tbi",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x8"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

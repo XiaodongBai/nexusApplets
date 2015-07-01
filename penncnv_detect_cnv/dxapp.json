@@ -1,0 +1,36 @@
+{
+  "name": "penncnv_detect_cnv",
+  "title": "penncnv_detect_cnv",
+  "summary": "penncnv_detect_cnv",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "label": "Signal file",
+      "optional": false,
+      "name": "signal_file",
+      "class": "file"
+    }
+  ],
+  "outputSpec": [
+    {
+      "patterns": [
+        "*.txt"
+      ],
+      "label": "Raw CNV calls",
+      "name": "raw_cnv_output",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.txt"
+      ],
+      "label": "LOG file",
+      "name": "log",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

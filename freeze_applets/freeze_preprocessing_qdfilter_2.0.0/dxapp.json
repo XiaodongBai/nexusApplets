@@ -1,0 +1,41 @@
+{
+  "name": "freeze_preprocessing_qdfilter_2.0.0",
+  "title": "freeze_preprocessing_qdfilter_2.0.0",
+  "summary": "freeze_preprocessing_qdfilter_2.0.0",
+  "dxapi": "2.0.0",
+  "inputSpec": [
+    {
+      "label": "pVCF header file",
+      "help": "The header of the pVCF file.",
+      "name": "pheader",
+      "class": "file"
+    },
+    {
+      "label": "EVE VCF file",
+      "name": "eve",
+      "class": "file"
+    },
+    {
+      "label": "Sample",
+      "name": "sample",
+      "class": "string"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "qdfilter_failed",
+      "help": "bgzipped file of information for samples failing QDfilter.",
+      "name": "qdfailed_samples",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x8"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

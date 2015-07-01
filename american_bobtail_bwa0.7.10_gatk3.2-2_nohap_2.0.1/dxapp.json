@@ -1,0 +1,75 @@
+{
+  "name": "american_bobtail_bwa0.7.10_gatk3.2-2_nohap_2.0.1",
+  "title": "RGC American_Bobtail v2.0.0 Analysis Pipeline",
+  "summary": "BWA alignment, Samtools sort, Picard markdups, GATK base recalibration, GATK indel realignment",
+  "dxapi": "2.0.1",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.fq.gz",
+        "*.fastq.gz"
+      ],
+      "label": "Reads",
+      "help": "A file, in gzipped FASTQ format, with the left reads to be mapped.",
+      "name": "reads_fastqgz",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.fq.gz",
+        "*.fastq.gz"
+      ],
+      "label": "Reads (right mates)",
+      "help": "A file, in gzipped FASTQ format, with the right reads to be mapped.",
+      "name": "reads2_fastqgz",
+      "class": "file"
+    },
+    {
+      "group": "Parameters",
+      "help": "A string (without spaces) describing the sample; the output files will be prefixed by this string. It will also appear in the read group information in the BAM file and in the sample information in the VCF file.",
+      "default": {
+        "$dnanexus_link": {
+          "input": "reads_fastqgz",
+          "metadata": "properties.sample"
+        }
+      },
+      "label": "Sample",
+      "class": "string",
+      "name": "sample"
+    }
+  ],
+  "outputSpec": [
+    {
+      "patterns": [
+        "*.bam"
+      ],
+      "label": "BAM file",
+      "help": "A BAM file of realigned mappings.",
+      "name": "realigned_bam",
+      "class": "array:file"
+    },
+    {
+      "patterns": [
+        "*.bai"
+      ],
+      "label": "BAI file",
+      "help": "A BAI file of realigned mappings.",
+      "name": "realigned_bai",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "openjdk-7-jre-headless"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem2_ssd1_x8"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

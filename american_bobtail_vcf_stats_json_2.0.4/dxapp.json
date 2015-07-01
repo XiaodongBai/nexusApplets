@@ -1,0 +1,121 @@
+{
+  "name": "american_bobtail_vcf_stats_json_2.0.4",
+  "title": "RGC American_Bobtail v2.0.4 Analysis Pipeline",
+  "summary": "RGC American_Bobtail v2.0.4 Analysis Pipeline",
+  "dxapi": "2.0.4",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.vcf.gz"
+      ],
+      "label": "SNPs",
+      "help": "A file, in bgzipped VCF format, with the variants to be analyzed.",
+      "name": "vcfgz_file",
+      "class": "file"
+    },
+    {
+      "label": "Depth of Coverage",
+      "help": "Depth of Coverage out file. For indication of the finish of depth of coverage applet only. Not processed in this applet.",
+      "name": "depth",
+      "class": "file"
+    },
+    {
+      "label": "BAM stats",
+      "help": "stats from the BAM file. For indication of the finish of bamstats applet only. Not processed in this applet.",
+      "name": "bamstats",
+      "class": "file"
+    },
+    {
+      "group": "Parameters",
+      "help": "A string (without spaces) describing the sample; the output files will be prefixed by this string. It will also appear in the read group information in the BAM file and in the sample information in the VCF file.",
+      "default": {
+        "$dnanexus_link": {
+          "input": "vcfgz_file",
+          "metadata": "properties.sample"
+        }
+      },
+      "label": "Sample",
+      "class": "string",
+      "name": "sample"
+    },
+    {
+      "group": "Parameters",
+      "help": "A string (without spaces) describing the run; It will be used by the perl script to generate a JSON file.",
+      "default": {
+        "$dnanexus_link": {
+          "input": "vcfgz_file",
+          "metadata": "properties.run_folder"
+        }
+      },
+      "label": "Run",
+      "class": "string",
+      "name": "run"
+    },
+    {
+      "group": "Parameters",
+      "help": "A string (without spaces) describing the lane; It will be used by the perl script to generate a JSON file.",
+      "default": {
+        "$dnanexus_link": {
+          "input": "vcfgz_file",
+          "metadata": "properties.lane"
+        }
+      },
+      "label": "Lane",
+      "class": "string",
+      "name": "lane"
+    },
+    {
+      "group": "Parameters",
+      "help": "A string (without spaces) describing the flowcell; It will be used by the perl script to generate a JSON file.",
+      "default": {
+        "$dnanexus_link": {
+          "input": "vcfgz_file",
+          "metadata": "properties.flowcell"
+        }
+      },
+      "label": "Flowcell",
+      "class": "string",
+      "name": "flowcell"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "Output statistics",
+      "help": "Several files containing statistics",
+      "name": "stats",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "texlive-fonts-recommended"
+      },
+      {
+        "name": "texlive-latex-recommended"
+      },
+      {
+        "name": "texlive-latex-base"
+      },
+      {
+        "name": "texlive-latex-extra"
+      },
+      {
+        "name": "latex-xcolor"
+      },
+      {
+        "name": "r-base-core"
+      },
+      {
+        "name": "python-matplotlib"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x2"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

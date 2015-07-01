@@ -1,0 +1,91 @@
+{
+  "name": "target_sequencing_gatk3.2-2_hapcall_gt_1.0.0",
+  "title": "target_sequencing_gatk3.2-2_hapcall_gt_1.0.0",
+  "summary": "GATK variant calling, GATK readDepth, GVCF and genotyped VCF for target sequencing",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.bam"
+      ],
+      "label": "BAM file",
+      "help": "A BAM file of realigned mappings.",
+      "name": "realigned_bam",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.bai"
+      ],
+      "label": "BAI file",
+      "help": "A BAI file of realigned mappings.",
+      "name": "realigned_bai",
+      "class": "file"
+    },
+    {
+      "group": "Parameters",
+      "help": "A string (without spaces) describing the sample; the output files will be prefixed by this string. It will also appear in the read group information in the BAM file and in the sample information in the VCF file.",
+      "default": {
+        "$dnanexus_link": {
+          "input": "realigned_bam",
+          "metadata": "properties.sample"
+        }
+      },
+      "label": "Sample",
+      "class": "string",
+      "name": "sample"
+    }
+  ],
+  "outputSpec": [
+    {
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "label": "gVCF",
+      "help": "bgzipped gVCF file containing the recalibrated variants.",
+      "name": "gvcfgz",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.gvcf.gz.tbi"
+      ],
+      "label": "gTBI",
+      "help": "A TBI file containing the tabix-generated index of the gVCF file.",
+      "name": "gtbi",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz"
+      ],
+      "label": "VCF",
+      "help": "bgzipped VCF file containing the recalibrated variants.",
+      "name": "genotyped_vcfgz",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz.tbi"
+      ],
+      "label": "TBI",
+      "help": "A TBI file containing the tabix-generated index of the gVCF file.",
+      "name": "genotyped_tbi",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "openjdk-7-jre-headless"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x4"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

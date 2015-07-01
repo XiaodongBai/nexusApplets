@@ -1,0 +1,61 @@
+{
+  "name": "PRIMUS-2",
+  "title": "PRIMUS-2",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "label": "plink_genome_file",
+      "optional": false,
+      "name": "IBD_estimates",
+      "class": "file"
+    },
+    {
+      "label": "sex_file",
+      "optional": true,
+      "name": "sex_file",
+      "class": "file"
+    },
+    {
+      "label": "age_file",
+      "optional": true,
+      "name": "age_file",
+      "class": "file"
+    },
+    {
+      "label": "affection_file",
+      "optional": true,
+      "name": "affection_file",
+      "class": "file"
+    },
+    {
+      "label": "mito_file",
+      "optional": true,
+      "name": "mito_file",
+      "class": "file"
+    },
+    {
+      "label": "y_file",
+      "optional": true,
+      "name": "y_file",
+      "class": "file"
+    },
+    {
+      "label": "PR_commands",
+      "optional": false,
+      "name": "PR_commands",
+      "class": "file"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "results",
+      "help": "file containing PRIMUS results",
+      "name": "results",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

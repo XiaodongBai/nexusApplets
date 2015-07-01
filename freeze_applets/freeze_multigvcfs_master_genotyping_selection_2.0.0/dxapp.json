@@ -1,0 +1,67 @@
+{
+  "name": "freeze_multigvcfs_master_genotyping_selection_2.0.0",
+  "title": "freeze_multigvcfs_master_genotyping_selection_2.0.0",
+  "summary": "freeze_multigvcfs_master_genotyping_selection_2.0.0 genotyping master GVCF and combined GVCFs and select out template sample",
+  "dxapi": "2.0.0",
+  "inputSpec": [
+    {
+      "help": "A ID",
+      "name": "sample",
+      "class": "string"
+    },
+    {
+      "help": "200-sample combined GVCFs file",
+      "name": "combined_gvcf",
+      "class": "string"
+    },
+    {
+      "help": "tbi file of 200-sample combined GVCFs file",
+      "name": "combined_gvcf_tbi",
+      "class": "string"
+    },
+    {
+      "help": "master GVCF file that is located in /resources/",
+      "name": "master_gvcf",
+      "class": "string"
+    },
+    {
+      "help": "tbi file of the master GVCF file that is located in /resources/",
+      "name": "master_gvcf_tbi",
+      "class": "string"
+    }
+  ],
+  "outputSpec": [
+    {
+      "patterns": [
+        "*.vcf.gz"
+      ],
+      "label": "VCF",
+      "help": "bgzipped VCF file containing the recalibrated variants.",
+      "name": "genotyped_vcfgz",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz.tbi"
+      ],
+      "label": "TBI",
+      "help": "A TBI file containing the tabix-generated index of the gVCF file.",
+      "name": "genotyped_tbi",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "openjdk-7-jre-headless"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem2_ssd1_x4"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "clamms",
+  "title": "CLAMMS",
+  "summary": "CLAMMS",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "label": "DNAnexus project name",
+      "optional": false,
+      "name": "dx_project",
+      "class": "string"
+    },
+    {
+      "label": "Sample ID",
+      "optional": false,
+      "name": "sample_id",
+      "class": "string"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "BED file with the CNV calls",
+      "name": "cnv_bed",
+      "class": "file"
+    },
+    {
+      "label": "BED file with the coverage values",
+      "name": "coverage_bed",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  },
+  "access": {
+    "allProjects": "VIEW"
+  }
+}

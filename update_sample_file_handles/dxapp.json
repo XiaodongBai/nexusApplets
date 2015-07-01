@@ -1,0 +1,40 @@
+{
+  "name": "update_sample_file_handles",
+  "title": "update_sample_file_handles",
+  "summary": "update_sample_file_handles",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "label": "run ID",
+      "class": "string",
+      "name": "run"
+    },
+    {
+      "label": "lane ID",
+      "class": "string",
+      "name": "lane"
+    },
+    {
+      "label": "Sample",
+      "class": "string",
+      "name": "sample"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "Output statistics",
+      "help": "Several files containing statistics",
+      "name": "stats",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x2"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

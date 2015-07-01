@@ -1,0 +1,49 @@
+{
+  "name": "freeze_remove_sample_bcftools_1.0.0",
+  "title": "freeze_remove_sample_bcftools_1.0.0",
+  "summary": "freeze_remove_sample_bcftools_1.0.0",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "label": "VCF or GVCF",
+      "help": "Bgzipped gVCF file containing the recalibrated variants.",
+      "name": "vcf",
+      "class": "file"
+    },
+    {
+      "label": "tbi for VCF or GVCF",
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "name": "vcf_tbi",
+      "class": "file"
+    },
+    {
+      "label": "Sample list",
+      "class": "file",
+      "name": "samplelist"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "selected_vcf",
+      "help": "bgzipped, selected vcf.",
+      "name": "selected_vcfgz",
+      "class": "file"
+    },
+      {
+      "label": "selected_vcf tabix index",
+      "help": "bgzipped, selected vcf tbi.",
+      "name": "selected_vcfgz_tbi",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x4"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

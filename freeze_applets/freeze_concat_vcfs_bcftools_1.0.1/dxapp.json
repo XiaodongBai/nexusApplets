@@ -1,0 +1,275 @@
+{
+  "name": "freeze_concat_vcfs_bcftools_1.0.1",
+  "title": "freeze_concat_vcfs_bcftools_1.0.1",
+  "summary": "freeze_concat_vcfs_bcftools_1.0.1",
+  "dxapi": "1.0.1",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "label": "gVCFs1",
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "name": "gvcfs1",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "label": "gVCFs2",
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "name": "gvcfs2",
+      "class": "file"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs3",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs3"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs4",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs4"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs5",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs5"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs6",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs6"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs7",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs7"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs8",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs8"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs9",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs9"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs10",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs10"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs11",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs11"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs12",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs12"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs13",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs13"
+    },
+    {                                                                                                                                                                   
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs14",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs14"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs15",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs15"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs16",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs16"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs17",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs17"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs18",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs18"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs19",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs19"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs20",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs20"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs21",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs21"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs22",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs22"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs23",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs23"
+    },
+    {
+      "help": "First bgzipped gVCF file containing the recalibrated variants.",
+      "label": "gVCFs24",
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "optional": true,
+      "class": "file",
+      "name": "gvcfs24"
+    },
+    {
+      "label": "Sample",
+      "name": "sample",
+      "class": "string"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "merged_vcf",
+      "help": "bgzipped, merged vcf.",
+      "name": "merged_vcfgz",
+      "class": "file"
+    },
+    {
+      "label": "merged_vcf tabix index",
+      "help": "bgzipped, merged vcf tbi.",
+      "name": "merged_vcfgz_tbi",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_hdd2_x32"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

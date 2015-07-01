@@ -1,0 +1,60 @@
+{
+  "name": "american_bobtail_bam_stats_2.0.3",
+  "title": "RGC American_Bobtail v2.0.3 Analysis Pipeline",
+  "summary": "RGC American_Bobtail v2.0.3 Analysis Pipeline",
+  "dxapi": "2.0.3",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.bam"
+      ],
+      "label": "Mappings",
+      "help": "A file, in BAM format, with the mappings to be analyzed.",
+      "name": "bam",
+      "class": "file"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "Output statistics",
+      "help": "Several files containing statistics",
+      "name": "stats",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "openjdk-6-jre-headless"
+      },
+      {
+        "name": "texlive-fonts-recommended"
+      },
+      {
+        "name": "texlive-latex-recommended"
+      },
+      {
+        "name": "texlive-latex-base"
+      },
+      {
+        "name": "texlive-latex-extra"
+      },
+      {
+        "name": "latex-xcolor"
+      },
+      {
+        "name": "r-base-core"
+      },
+      {
+        "name": "python-matplotlib"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x2"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

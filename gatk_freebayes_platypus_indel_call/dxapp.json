@@ -1,0 +1,156 @@
+{
+  "name": "gatk_freebayes_platypus_indel_call",
+  "title": "Intersect Indels using GATK_FB_PP",
+  "summary": "Exclude indels can be called by only 1 out of the three methods.",
+  "dxapi": "2.0.0",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.bam"
+      ],
+      "label": "input bam file",
+      "help": "A realigned bam file can be directly used for variant genotype calling",
+      "name": "realigned_bam",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.bai"
+      ],
+      "label": "input bai file",
+      "help": "A BAI file of realigned mappings.",
+      "name": "realigned_bai",
+      "class": "file"
+    },
+    {
+      "group": "Parameters",
+      "help": "A string (without spaces) describing the sample, the output files will be prefixed by this string, it will also appear in the read group information in the BAM file and in the sample information in the VCF file",
+      "default": {
+        "$dnanexus_link": {
+          "input": "realigned_bam",
+          "metadata": "properties.sample"
+        }
+      },
+      "label": "Sample",
+      "class": "string",
+      "name": "sample"
+    }
+  ],
+  "outputSpec": [
+    {
+      "patterns": [
+        "*.vcf.gz",
+        "*.vcf"
+      ],
+      "label": "Combined vcf file includes indels called by at least two methods",
+      "name": "combined_indel_vcf",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz.tbi",
+        "*.vcf.tbi"
+      ],
+      "label": "index of the combined vcf file includes indels called by at least two methods",
+      "name": "combined_indel_vcf_idx",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz",
+        "*.vcf"
+      ],
+      "label": "bgzipped VCF file containing the variants called by gatk",
+      "name": "gk_genotyped_vcfgz_file",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz.tbi",
+        "*.vcf.tbi"
+      ],
+      "label": "index of bgzipped VCF file containing the variants called by gatk",
+      "name": "gk_genotyped_vcfgz_file_idx",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz",
+        "*.vcf"
+      ],
+      "label": "bgzipped VCF file containing the variants called by freebayes",
+      "name": "fb_genotyped_vcfgz_file",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz.tbi",
+        "*.vcf.tbi"
+      ],
+      "label": "index of bgzipped VCF file containing the variants called by freebayes",
+      "name": "fb_genotyped_vcfgz_file_idx",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz",
+        "*.vcf"
+      ],
+      "label": "bgzipped VCF file containing the variants called by platypus",
+      "name": "pp_genotyped_vcfgz_file",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz.tbi",
+        "*.vcf.tbi"
+      ],
+      "label": "index of bgzipped VCF file containing the variants called by platypus",
+      "name": "pp_genotyped_vcfgz_file_idx",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "openjdk-7-jre-headless"
+      },
+      {
+        "name": "zlib1g-dev"
+      },
+      {
+        "package_manager": "git",
+        "name": "htslib",
+        "url": "https://github.com/samtools/htslib.git",
+        "destdir": "/",
+        "tag": "master",
+        "build_commands": "sudo make && sudo make install"
+      },
+      {
+        "version": "0.19.1",
+        "package_manager": "pip",
+        "name": "cython"
+      },
+      {
+        "package_manager": "git",
+        "name": "Platypus",
+        "url": "https://github.com/andyrimmer/Platypus.git",
+        "destdir": "/",
+        "tag": "master",
+        "build_commands": "sudo make"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem2_ssd1_x8"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  },
+  "access": {
+    "network": [
+      "*"
+    ]
+  }
+}

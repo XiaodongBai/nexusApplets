@@ -1,0 +1,118 @@
+{
+  "name": "american_bobtail_gatk3.2-2_depthofcoverage_2.0.2",
+  "title": "RGC American_Bobtail v2.0.2 Analysis Pipeline",
+  "summary": "GATK DepthOfCoverage",
+  "dxapi": "2.0.2",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.bam"
+      ],
+      "label": "BAM file",
+      "help": "A BAM file of realigned mappings.",
+      "name": "realigned_bam",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.bai"
+      ],
+      "label": "BAI file",
+      "help": "A BAI file of realigned mappings.",
+      "name": "realigned_bai",
+      "class": "file"
+    },
+    {
+      "group": "Parameters",
+      "help": "A string (without spaces) describing the sample; the output files will be prefixed by this string. It will also appear in the read group information in the BAM file and in the sample information in the VCF file.",
+      "default": {
+        "$dnanexus_link": {
+          "input": "realigned_bam",
+          "metadata": "properties.sample"
+        }
+      },
+      "label": "Sample",
+      "class": "string",
+      "name": "sample"
+    }
+  ],
+  "outputSpec": [
+    {
+      "patterns": [
+        "*.out"
+      ],
+      "label": "per locus coverage",
+      "help": "output file of per locus coverage.",
+      "name": "rd1x_q30",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.out_summary"
+      ],
+      "label": "total, mean, median, quartiles, and threshold proportions, aggregated over all bases",
+      "help": "output file of total, mean, median, quartiles, and threshold proportions, aggregated over all bases.",
+      "name": "rd1x_q30_summary",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.out_statistics"
+      ],
+      "label": "coverage histograms (# locus with X coverage), aggregated over all bases",
+      "help": "output file of coverage histograms (# locus with X coverage), aggregated over all bases.",
+      "name": "rd1x_q30_statistics",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.out_interval_summary"
+      ],
+      "label": "total, mean, median, quartiles, and threshold proportions, aggregated per interval",
+      "help": "output file of total, mean, median, quartiles, and threshold proportions, aggregated per interval.",
+      "name": "rd1x_q30_interval_summary",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.out_interval_statistics"
+      ],
+      "label": "2x2 table of # of intervals covered to >= X depth in >=Y samples",
+      "help": "output file of 2x2 table of # of intervals covered to >= X depth in >=Y samples.",
+      "name": "rd1x_q30_interval_statistics",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.out_cumulative_coverage_counts"
+      ],
+      "label": "coverage histograms (# locus with >= X coverage), aggregated over all bases",
+      "help": "output file of coverage histograms (# locus with >= X coverage), aggregated over all bases.",
+      "name": "rd1x_q30_cumulative_coverage_counts",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.out_cumulative_coverage_proportions"
+      ],
+      "label": "proprotions of loci with >= X coverage, aggregated over all bases",
+      "help": "output file of proprotions of loci with >= X coverage, aggregated over all bases.",
+      "name": "rd1x_q30_cumulative_coverage_proportions",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "openjdk-7-jre-headless"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x4"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

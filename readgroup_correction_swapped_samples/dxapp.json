@@ -1,0 +1,60 @@
+{
+  "name": "readgroup_correction_swapped_samples",
+  "title": "readgroup_correction_swapped_samples",
+  "summary": "Merge BAM, GATK variant calling, GATK readDepth, GVCF and genotyped VCF",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.bam"
+      ],
+      "label": "BAM file",
+      "help": "A BAM file of realigned mappings.",
+      "name": "realigned_bam",
+      "class": "file"
+    },
+    {
+      "group": "Parameters",
+      "help": "A string (without spaces) describing the sample; the output files will be prefixed by this string. It will also appear in the read group information in the BAM file and in the sample information in the VCF file.",
+      "default": {
+        "$dnanexus_link": {
+          "input": "realigned_bam",
+          "metadata": "properties.sample"
+        }
+      },
+      "label": "Sample",
+      "class": "string",
+      "name": "sample"
+    }
+  ],
+  "outputSpec": [
+    {
+      "patterns": [
+        "*.bam"
+      ],
+      "label": "corrected_bam",
+      "help": "A BAM file of corrected alignment.",
+      "name": "corrected_bam",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.bai"
+      ],
+      "label": "corrected_bai",
+      "help": "A BAI file of the corrected alignment.",
+      "name": "corrected_bai",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [ ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x4"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

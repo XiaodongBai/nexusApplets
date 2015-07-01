@@ -1,0 +1,111 @@
+{
+  "name": "demultiplex-lane-nocasava_nomismatch_2.0.1",
+  "title": "RGC American_Bobtail v2.0.1 Analysis Pipeline",
+  "summary": "Converts Illumina data from BCL to FASTQ, demultiplexing barcoded samples",
+  "dxapi": "2.0.1",
+  "inputSpec": [
+    {
+      "patterns": [
+        "run.*.tar.gz"
+      ],
+      "label": "Run data files",
+      "help": "One or more gzipped tar files containing the run data. These will all be unpacked in a common location in order to reconstitute the run directory.",
+      "name": "run_data",
+      "class": "array:file"
+    },
+    {
+      "patterns": [
+        "*.csv"
+      ],
+      "label": "Sample sheet",
+      "help": "The sample sheet file in CSV format, potentially extended with additional Regeneron fields.",
+      "name": "sample_sheet",
+      "class": "file"
+    },
+    {
+      "group": "Advanced",
+      "help": "Additional command-line options to be passed verbatim to the invocation of configureBclToFastq.pl. Example: --use-bases-mask Y100,I8n,Y100",
+      "label": "Advanced options",
+      "optional": true,
+      "class": "string",
+      "name": "advanced_opts"
+    }
+  ],
+  "outputSpec": [
+    {
+      "patterns": [
+        "*.fastq.gz"
+      ],
+      "label": "Left mates of samples",
+      "help": "An array of FASTQ files of left mates (one per sample)",
+      "name": "reads",
+      "class": "array:file"
+    },
+    {
+      "patterns": [
+        "*.fastq.gz"
+      ],
+      "label": "Right mates of samples",
+      "help": "An array of FASTQ files of right mates (one per sample)",
+      "name": "reads2",
+      "class": "array:file"
+    },
+    {
+      "patterns": [
+        "*.xml",
+        "*.html"
+      ],
+      "label": "Statistics files",
+      "help": "An array of XML and HTML files with run statistics",
+      "name": "stats",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "libxml-simple-perl"
+      },
+      {
+        "name": "xsltproc"
+      },
+      {
+        "name": "imagemagick"
+      },
+      {
+        "name": "gnuplot-nox"
+      },
+      {
+        "name": "ghostscript"
+      },
+      {
+        "name": "zlib1g-dev"
+      },
+      {
+        "name": "libbz2-dev"
+      },
+      {
+        "name": "libxml2"
+      },
+      {
+        "name": "libxml2-utils"
+      },
+      {
+        "name": "libxml2-dev"
+      },
+      {
+        "name": "libicu-dev"
+      },
+      {
+        "name": "libncurses5-dev"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem3_hdd2_x8"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

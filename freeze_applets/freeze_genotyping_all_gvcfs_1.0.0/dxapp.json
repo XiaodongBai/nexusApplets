@@ -1,0 +1,41 @@
+{
+  "name": "freeze_genotyping_all_gvcfs_1.0.0",
+  "title": "freeze_genotyping_all_gvcfs_1.0.0",
+  "summary": "freeze_genotyping_all_gvcfs_1.0.0 genotyping all GVCFs",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "help": "A ID",
+      "name": "sample",
+      "class": "string"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "genotyped_gVCF",
+      "help": "bgzipped, genotyped gVCF.",
+      "name": "genotyped_gvcfgz",
+      "class": "file"
+    },
+    {
+      "label": "genotyped_gVCF tabix index",
+      "help": "bgzipped, genotyped gVCF tbi.",
+      "name": "genotyped_gvcfgz_tbi",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "openjdk-7-jre-headless"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x16"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

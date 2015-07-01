@@ -1,0 +1,52 @@
+{
+  "name": "freeze_generate_master_gvcf_1.0.0",
+  "title": "freeze_generate_master_gvcf_1.0.0",
+  "summary": "freeze_generate_master_gvcf_1.0.0",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.vcf.gz"
+      ],
+      "label": "eve",
+      "help": "bgzipped vcf file containing all variants from EVE.",
+      "name": "eve",
+      "class": "file"
+    },
+    {
+      "label": "projectname",
+      "name": "projectname",
+      "class": "string"
+    }
+  ],
+  "outputSpec": [
+    {
+      "patterns": [
+        "*.gvcf.gz"
+      ],
+      "label": "VCF",
+      "help": "bgzipped VCF file containing the all variants.",
+      "name": "master_gvcfgz",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.gvcf.gz.tbi"
+      ],
+      "label": "TBI",
+      "help": "A TBI file containing the tabix-generated index of the vcf file.",
+      "name": "master_gtbi",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [ ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x32"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

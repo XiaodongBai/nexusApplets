@@ -1,0 +1,36 @@
+{
+  "name": "freeze_plink_merge_1.0.0",
+  "title": "freeze_plink_merge_1.0.0",
+  "summary": "freeze_plink_merge_1.0.0",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "label": "plink files",
+      "help": "The pattern of individual plink files",
+      "name": "pattern",
+      "class": "string"
+    },
+    {
+      "label": "Sample",
+      "name": "sample",
+      "class": "string"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "plink_files",
+      "help": "plink files generated from a VCF file.",
+      "name": "plink_files",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x8"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

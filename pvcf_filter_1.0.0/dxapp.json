@@ -1,0 +1,62 @@
+{
+  "name": "pvcf_filter_1.0.0",
+  "title": "pvcf_filter_1.0.0",
+  "summary": "pvcf_filter_1.0.0",
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "patterns": [
+        "*.vcf.gz"
+      ],
+      "label": "vcf",
+      "help": "bgzipped vcf file containing the recalibrated variants.",
+      "name": "vcfgz",
+      "class": "file"
+    },
+    {
+      "patterns": [
+        "*.vcf.gz.tbi"
+      ],
+      "label": "gTBI",
+      "help": "A TBI file containing the tabix-generated index of the vcf file.",
+      "name": "tbi",
+      "class": "file"
+    },
+    {
+      "label": "Sample",
+      "name": "sample",
+      "class": "string"
+    }
+  ],
+  "outputSpec": [
+    {
+      "label": "filtered VCF file (bg-zipped)",
+      "name": "filtered_vcfgz",
+      "class": "file"
+    },
+    {
+      "label": "Tabix index of VQSR'ed VCF file",
+      "name": "filtered_tbi",
+      "class": "file"
+    },
+    {
+      "label": "log files for the samples and loci failed the filters",
+      "name": "logs",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "execDepends": [
+      {
+        "name": "openjdk-7-jre-headless"
+      }
+    ],
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_hdd2_x8"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  }
+}

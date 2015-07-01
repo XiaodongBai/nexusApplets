@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+
+# A simple python script that makes use of the DNAnexus API
+# to propagate any user-defined metadata (in the form of
+# "tags" and "properties") from one file to another.
+#
+# In the Regeneron DNAnexus pipeline, the fastq files
+# produced by CASAVA contain certain metadata (lane,
+# flowcell, contributor, etc.). Running this script
+# ensures that the metadata is propagated from such
+# input files to all the output files (bam, vcf, etc.).
+
+import sys
+import json
+import dxpy
+import dxpy.utils
+
+if len(sys.argv) != 3:
+    sys.stderr.write("Usage: propagate-user-meta <from> <to>\n");
+    sys.exit(1)
+
+source_id_or_link = sys.argv[1]
+target_id_or_link = sys.argv[2]
+try:
+    source_id_or_link = json.loads(source_id_or_link)
+except ValueError:
+    pass
+try:
+    target_id_or_link = json.loads(target_id_or_link)
+except ValueError:
+    pass
+
+source = dxpy.get_handler(source_id_or_link)
+target = dxpy.get_handler(target_id_or_link)
+
+source_info = source.describe(incl_properties=True)
+target_info = target.describe(incl_properties=True)
+
+source_tags = source_info["tags"]
+source_properties = source_info["properties"]
+target_properties = target_info["properties"]
+
+if source_tags:
+    target.add_tags(source_tags)
+
+updates = {}
+for (key, value) in source_properties.items():
+    if key in target_properties and target_properties[key] != "":
+        if target_properties[key] != value:
+            updates[key] = target_properties[key]
+            target_set = set(target_properties[key].split(","))
+            for extra_key in value.split(","):
+                if extra_key not in target_set:
+                    updates[key] += "," + extra_key
+
+    else:
+        updates[key] = value
+
+if updates:
+    target.set_properties(updates)
